@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="常聽見這個講法：「某個顏色代表熱情，某個顏色代表冷淡」，我不能理解。顏色不就是可見光頻譜上的某一個點嗎？何來個性分別？ 但如果說：「某個數字讓人覺得寬厚親切，某個數字讓人覺得尖酸苛薄」，我就很能理解。可是數字不就是數線上的某一個點嗎？何來個性分別？嗯，確實有的。數字是很有個性的，從自然數到實數到複數，每個數字都像是性格">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Excel_我最喜歡的公式之一">
+<meta property="og:url" content="http://yoursite.com/2016/06/25/excel-e6-88-91-e6-9c-80-e5-96-9c-e6-ad-a1-e7-9a-84-e5-85-ac-e5-bc-8f-e4-b9-8b-e4-b8-80/index.html">
+<meta property="og:site_name" content="亨利羊">
+<meta property="og:description" content="常聽見這個講法：「某個顏色代表熱情，某個顏色代表冷淡」，我不能理解。顏色不就是可見光頻譜上的某一個點嗎？何來個性分別？ 但如果說：「某個數字讓人覺得寬厚親切，某個數字讓人覺得尖酸苛薄」，我就很能理解。可是數字不就是數線上的某一個點嗎？何來個性分別？嗯，確實有的。數字是很有個性的，從自然數到實數到複數，每個數字都像是性格不同的朋友，與我神交已久。X的中正平和、Y的奇險怪誕、Z的海納百川、M的靈巧迴旋">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2017-11-18T00:26:39.565Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Excel_我最喜歡的公式之一">
+<meta name="twitter:description" content="常聽見這個講法：「某個顏色代表熱情，某個顏色代表冷淡」，我不能理解。顏色不就是可見光頻譜上的某一個點嗎？何來個性分別？ 但如果說：「某個數字讓人覺得寬厚親切，某個數字讓人覺得尖酸苛薄」，我就很能理解。可是數字不就是數線上的某一個點嗎？何來個性分別？嗯，確實有的。數字是很有個性的，從自然數到實數到複數，每個數字都像是性格不同的朋友，與我神交已久。X的中正平和、Y的奇險怪誕、Z的海納百川、M的靈巧迴旋">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/25/excel-e6-88-91-e6-9c-80-e5-96-9c-e6-ad-a1-e7-9a-84-e5-85-ac-e5-bc-8f-e4-b9-8b-e4-b8-80/"/>
+
+
+
+
+
+  <title>Excel_我最喜歡的公式之一 | 亨利羊</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">亨利羊</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/25/excel-e6-88-91-e6-9c-80-e5-96-9c-e6-ad-a1-e7-9a-84-e5-85-ac-e5-bc-8f-e4-b9-8b-e4-b8-80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Henry Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亨利羊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Excel_我最喜歡的公式之一</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2016-06-25T10:19:53+08:00">
+                2016-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Excel/" itemprop="url" rel="index">
+                    <span itemprop="name">Excel</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Excel/Knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">Knowledge</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>常聽見這個講法：「某個顏色代表熱情，某個顏色代表冷淡」，我不能理解。<br>顏色不就是可見光頻譜上的某一個點嗎？何來個性分別？</p>
+<p>但如果說：「某個數字讓人覺得寬厚親切，某個數字讓人覺得尖酸苛薄」，我就很能理解。<br>可是數字不就是數線上的某一個點嗎？何來個性分別？<br>嗯，確實有的。數字是很有個性的，從自然數到實數到複數，每個數字都像是性格不同的朋友，與我神交已久。<br>X的中正平和、Y的奇險怪誕、Z的海納百川、M的靈巧迴旋、N的木訥自閉(為保護當事人，均以代號呈現)，甚至是許多特性難以用言語形容的數字。我都知道他、認識他。可能跟他很要好、也可能跟他不太熟。總之大家各具特色就是了。</p>
+<p>而我最近開始覺得Excel的各個函數也各具特色。雖然四百多個函數裡面，與我相熟的不過一成。但這些好朋友已足以讓我的生活精采豐富～<br>在此介紹其中一個特別對我脾胃的Excel公式：<br><strong>{=SUM(1/COUNTIF(Data,Data))}</strong></p>
+<p>有人可能比較習慣這個形式：<br><strong>=SUMPRODUCT(1/COUNTIF(Data,Data))</strong></p>
+<p>這個公式的作用是「計算清單中不重複的個數」, 或者簡而言之就是「計算種類」。例如一箱書，清單有上百本，但其中有一些書是重複的。如果我想用Excel計算這裡總共有「幾本書」，可以對清單使用<strong>counta</strong>。那如果是想扣除重複筆數，只計算總共有「幾款書」，就可以使用<strong>{=SUM(1/COUNTIF(Data,Data))}了。</strong><br>因為本站定位不是教學網站，所以就不多費篇幅解釋原理了。歡迎參考其它先進的教學：</p>
+<p><em><a href="http://blog.xuite.net/saladoil/excel/7063631-%E5%A6%82%E4%BD%95%E5%82%B3%E5%9B%9E%E4%B8%8D%E9%87%8D%E8%A4%87%E7%9A%84%E8%B3%87%E6%96%99%E5%80%8B%E6%95%B8%3F" target="_blank" rel="noopener">[Excel 遊樂場] 如何傳回不重複的資料個數?</a></em><br><em><a href="http://isvincent.pixnet.net/blog/post/30554624-excel-%E8%A8%88%E7%AE%97%E4%B8%8D%E9%87%8D%E8%A6%86%E7%9A%84%E6%95%B8%E5%80%BC%E5%80%8B%E6%95%B8" target="_blank" rel="noopener">[學不完．教不停．用不盡] Excel-計算不重覆的數值個數</a></em><br><em><a href="http://www.exceltip.net/thread-1807-1-1.html" target="_blank" rel="noopener">[函数与公式] 统计不重复值的三种解法简介</a></em></p>
+<p>這公式顯然是一個很基本的用法，上面引用的教學甚至有十年之久。但這個公式讓我很有感覺的是，竟然可以用平凡的<strong>sum</strong>和<strong>countif</strong>調製出這麼有創意的用法。人人都會用<strong>sum</strong>和<strong>countif</strong>，但是卻不是人人都能想到如何做出「計算不重複個數」的延伸功能。</p>
+<p>沒有做不到，只有想不到。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/21/excel-e5-b0-a4-e6-8b-89-e8-a8-88-e5-8a-83-project-euler-e7-ac-ac18-e9-a1-8c-maximum-path-sum-i/" rel="next" title="Excel_尤拉計劃 Project Euler_第18題 Maximum path sum I">
+                <i class="fa fa-chevron-left"></i> Excel_尤拉計劃 Project Euler_第18題 Maximum path sum I
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/26/e3-80-90excel-e3-80-91-e3-80-90-e9-82-8a-e5-81-9a-e9-82-8a-e5-af-ab-e3-80-91-e5-a4-9a-e6-ac-84-e7-8b-80-e6-b3-81-e4-b8-8b-e5-88-aa-e9-99-a4-e7-a9-ba-e7-99-bd-e5-88-97/" rel="prev" title="【Excel】【邊做邊寫】多欄狀況下 刪除空白列">
+                【Excel】【邊做邊寫】多欄狀況下 刪除空白列 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Henry Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yhlhenry@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henry Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

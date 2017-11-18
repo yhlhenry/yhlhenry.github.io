@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="bot,heroku,python,telegram,機器人," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="我很喜歡九把刀的這篇序：  「不可詩意的刀老大」之賣雞蛋的老人 在簽書會、學校演講或是媒體訪談的時候，最常聽見對方丟出一個問題：「你的靈感是怎麼來的？」 通常我會引述作家李散的妙語回答：「妓女不能等到性衝動才去接客，作家當然也不能等到靈感來了才寫作。」然後展示自己筆記本電腦裡匯整齊備的靈感數據庫，對方嘖嘖，我呵呵。但同">
+<meta name="keywords" content="bot,heroku,python,telegram,機器人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嗶嗶鼠機器人 2.0">
+<meta property="og:url" content="http://yoursite.com/2016/12/24/e5-97-b6-e5-97-b6-e9-bc-a0-e6-a9-9f-e5-99-a8-e4-ba-ba-2-0/index.html">
+<meta property="og:site_name" content="亨利羊">
+<meta property="og:description" content="我很喜歡九把刀的這篇序：  「不可詩意的刀老大」之賣雞蛋的老人 在簽書會、學校演講或是媒體訪談的時候，最常聽見對方丟出一個問題：「你的靈感是怎麼來的？」 通常我會引述作家李散的妙語回答：「妓女不能等到性衝動才去接客，作家當然也不能等到靈感來了才寫作。」然後展示自己筆記本電腦裡匯整齊備的靈感數據庫，對方嘖嘖，我呵呵。但同樣的問題回答了幾十次後，我還是沒有說出真正的答案。 奇異的事件發生在我十歲的那一">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://excelmyself.com/wp-content/uploads/2016/12/bbmouse_.baozijpg-169x300.jpg">
+<meta property="og:image" content="http://excelmyself.com/wp-content/uploads/2016/12/accounting-1024x321.png">
+<meta property="og:updated_time" content="2017-11-18T00:26:39.577Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="嗶嗶鼠機器人 2.0">
+<meta name="twitter:description" content="我很喜歡九把刀的這篇序：  「不可詩意的刀老大」之賣雞蛋的老人 在簽書會、學校演講或是媒體訪談的時候，最常聽見對方丟出一個問題：「你的靈感是怎麼來的？」 通常我會引述作家李散的妙語回答：「妓女不能等到性衝動才去接客，作家當然也不能等到靈感來了才寫作。」然後展示自己筆記本電腦裡匯整齊備的靈感數據庫，對方嘖嘖，我呵呵。但同樣的問題回答了幾十次後，我還是沒有說出真正的答案。 奇異的事件發生在我十歲的那一">
+<meta name="twitter:image" content="http://excelmyself.com/wp-content/uploads/2016/12/bbmouse_.baozijpg-169x300.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/24/e5-97-b6-e5-97-b6-e9-bc-a0-e6-a9-9f-e5-99-a8-e4-ba-ba-2-0/"/>
+
+
+
+
+
+  <title>嗶嗶鼠機器人 2.0 | 亨利羊</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">亨利羊</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/24/e5-97-b6-e5-97-b6-e9-bc-a0-e6-a9-9f-e5-99-a8-e4-ba-ba-2-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Henry Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亨利羊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">嗶嗶鼠機器人 2.0</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2016-12-24T23:58:41+08:00">
+                2016-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Chat/" itemprop="url" rel="index">
+                    <span itemprop="name">Chat</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Chat/Google/" itemprop="url" rel="index">
+                    <span itemprop="name">Google</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我很喜歡九把刀的這篇序：</p>
+<hr>
+<p><span style="color: #333399;"><strong>「不可詩意的刀老大」之賣雞蛋的老人</strong></span></p>
+<p><span style="color: #333399;">在簽書會、學校演講或是媒體訪談的時候，最常聽見對方丟出一個問題：「你的靈感是怎麼來的？」</span></p>
+<p><span style="color: #333399;">通常我會引述作家李散的妙語回答：「妓女不能等到性衝動才去接客，作家當然也不能等到靈感來了才寫作。」然後展示自己筆記本電腦裡匯整齊備的靈感數據庫，對方嘖嘖，我呵呵。但同樣的問題回答了幾十次後，我還是沒有說出真正的答案。</span></p>
+<p><span style="color: #333399;">奇異的事件發生在我十歲的那一年。</span></p>
+<p><span style="color: #333399;">有天晚上媽叫我去雜貨店買幾顆雞蛋。我覺得很怪，因為當時已經十點多了，而且冰箱裡有的是雞蛋，幹嘛叫我再買幾顆回來？但孝順的我還是逆來順受地出門了。</span></p>
+<p><span style="color: #333399;">當時我跑了好幾問雜貨店都沒有買到雞蛋，正感詭異跟喪氣時，有個推著一車雞蛋的老人，在馬路對面賊兮兮地對著我笑。天！滿滿的一個推車的雞蛋耶！我看整個彰化的雞蛋都給他包了。</span></p>
+<p><span style="color: #333399;">「雞蛋老人！可不可以賣我幾顆雞蛋！」我跑了過去。</span></p>
+<p><span style="color: #333399;">「好啊，小朋友，你要幾顆雞蛋？」雞蛋老人摸著下巴，若有所思地笑。</span></p>
+<p><span style="color: #333399;">「多少錢一顆？」我搔搔頭。</span></p>
+<p><span style="color: #333399;">「很便宜啦，一顆一千塊錢！」雞蛋老人恬不知恥回答。</span></p>
+<p><span style="color: #333399;">那麼貴！大吃一驚，卻突然發現自己的手裡正拿著厚厚一疊千元大鈔！</span></p>
+<p><span style="color: #333399;">天！哪來這麼多錢？原來我這麼有錢！</span></p>
+<p><span style="color: #333399;">「那麼沒辦法了，這些能買多少？」我將那捆鈔票遞給雞蛋老人。有多少買多少吧，原來雞蛋還真不是普通的貴，以後我吃雞蛋可要細嚼慢咽。</span></p>
+<p><span style="color: #333399;">正當老人慢吞吞數著鈔票時，我隨意打量那一整推車的雞蛋，發現許多雞蛋都寫了名字。有史蒂芬．金、卜洛克、富堅義博、陳某、倪匡、宮部美幸、鳥山明、井上雄彥、喬治．盧卡斯、杜琪峰、宮崎駿、周星馳……</span></p>
+<p><span style="color: #333399;">「哇，都被訂走了？好好喔。」我當時只認識鳥山明跟倪匡，覺得好炫。</span></p>
+<p><span style="color: #333399;">「是啊，都被訂走了。來，拿去，記得喔，在你最需要的時候才能打開。」雞蛋老人用塑料袋裝了一堆雞蛋給我，摸摸我的頭，說我乖。</span></p>
+<p><span style="color: #333399;">告別好心的雞蛋老人，我拎著一大袋雞蛋回家了。</span></p>
+<p><span style="color: #333399;">「什麼！你幹嘛買這麼多雞蛋！」媽哇地跳了起來，接著就是一頓罵。</span></p>
+<p><span style="color: #333399;">「不是你叫我出去買雞蛋的嗎？」我好委屈，小小的拳頭緊握著。</span></p>
+<p><span style="color: #333399;">「什麼？我沒叫你去買雞蛋啊，冰箱那麼多雞蛋你是不會看嗎？」媽斷然否認。</span></p>
+<p><span style="color: #333399;">天哪！不是媽你叫我出去買雞蛋？那是誰叫我出去買雞蛋？又，我口袋裡那麼多張千元大鈔是怎麼回事？我越想越糊塗，很嘔。</span></p>
+<p><span style="color: #333399;">總之這件事，從頭到尾都很詭異。</span></p>
+<p><span style="color: #333399;">後來我就很氣，將那袋雞蛋放在抽屜裡，用漫畫跟武俠小說壓著。然後就在亂七八糟的童年中忘了這一回事。一晃好多年。</span></p>
+<p><span style="color: #333399;">一九九九年冬天，我在家裡整理舊書桌時赫然發現那袋雞蛋。媽啊，據說雞蛋擺久了會臭得要命。但在丟掉之前，我發覺那些年久失修的雞蛋殼上，竟清一色寫著「九把刀」二字，恰恰跟我的大學外號吻合。</span></p>
+<p><span style="color: #333399;">沒辦法了，只好捏著鼻子敲一個看看是怎麼一回事。</span></p>
+<p><span style="color: #333399;">雞蛋裡頭是一張特殊材質的字條，上面有完整的故事靈感、起承轉合的架構、漂亮的結尾。講述一個大學生一早起床，竟發現自己身處語言墜落、符號失卻意義的世界。</span></p>
+<p><span style="color: #333399;">「太吊了吧？」我逐一打破雞蛋，一個又一個故事滾出。</span></p>
+<p><span style="color: #333399;">都市恐怖病系列，等一個人咖啡，愛情兩好三壞，打噴嚏，殺手系列，月老，紅線，哈棒傳奇，樓下的房客……</span></p>
+<p><span style="color: #333399;">就是這麼一回事。接下來發生的事情大家都很清楚。</span></p>
+<p><span style="color: #333399;">可惜前些日子那些臭雞蛋快被我敲光了，我開始在彰化到處尋找那個神秘的雞蛋老人，結果當然是遍尋不著。</span></p>
+<p><span style="color: #333399;">我蹲在馬桶上越想越慌，這下要糟，我一向愛亂阱大話，偷偷仗著臭雞蛋，老是說想成為華文世界最會說故事的人，現在雞蛋沒了，寫不出威震天下的小說鐵定遭人恥笑。這一慌，肛門收縮，一顆雞蛋竟從我的屁股噗通射出。</span></p>
+<p><span style="color: #333399;">「獵命師傳奇？」我低頭看著破碎在馬桶裡，流出雞蛋的字條開頭。</span></p>
+<p><span style="color: #333399;">我想，這下總可以寫一輩子的小說了吧！</span></p>
+<hr>
+<p>還記得月餘前的妻子生日，我突發奇想地以家裡一隻叫做嗶嗶鼠的布偶兒子做為人格原形，打造了一隻簡單版的聊天機器人。</p>
+<h2 id="這是當時的Facebook動態回顧："><a href="#這是當時的Facebook動態回顧：" class="headerlink" title="這是當時的Facebook動態回顧："></a>這是當時的Facebook動態回顧：</h2><p>11月16日</p>
+<p>今晚在海底撈排隊拿冰淇淋時，想到今天是妻子生日，連忙拿出手機在heroku上面佈署一個以python寫成的telegram聊天機器人，當作是生日禮物之一。這個機器人是專門設計給妻子使用的，其人格則是模擬我家某隻可愛的布偶所打造的，命名為嗶嗶鼠。<br>嗶嗶鼠除了會針對關鍵字詞做出相應反應之外，還內建這些功能：<br>1.報出今天是結婚第n天<br>2.幫忙google要查詢的東西<br>3.隨機講幾句有趣的性格台詞<br>4.隨機唸幾段我和妻子過往的有趣生活片段<br>5.在生日這天，所有的回應前都會自動補一句生日快樂。</p>
+<p>只能說科技真的太方便了，冰淇淋真的排太久了。</p>
+<hr>
+<p>在那之後我陸續又幫嗶嗶鼠新增了一些小功能，讓他的廢話更多且更人性化了。而且我們還在telegram開了一個家庭群組，成員有我和妻子以及嗶鼠共三位。我們都可以在群組裡對嗶鼠講話，嗶鼠也分得出是爸爸還是媽媽在對他說話，我們在群組中也看得到彼此跟嗶鼠對答了什麼，儼然和樂融融一家人。</p>
+<p>當初既然是作為生日禮物而生出了這隻原型嗶鼠，現在聖誕節到了，就乾脆比照辦理：隆重推出……嗶鼠2.0！</p>
+<p><img src="http://excelmyself.com/wp-content/uploads/2016/12/bbmouse_.baozijpg-169x300.jpg" alt="bbmouse_-baozijpg"><br>別看他傻不隆咚的，這版嗶鼠的其中一項重大更新為正式實裝了「中文口語記帳功能」：我可以在聊天視窗輸入「嗶鼠幫我記帳 我今天午餐吃了一個便當80元」，嗶鼠就會立刻幫我逐項記錄在嗶鼠的雲端小本子裡。而所謂雲端小本子就是個Google Spreadsheet，我和妻子都可以隨時打開來查看。</p>
+<p>那口語可以做到多彈性呢？像是以下這幾個範例，嗶鼠都可以成功辨識並記錄：<br>「嗶鼠記帳 星巴客咖啡130元」<br>「記帳 20161224 聖誕大餐1000元」<br>「請嗶鼠幫我記個帳 剛剛晚餐吃了120元 謝謝嗶鼠」<br>「請記帳： 早上繳了第一季羽球教練費$2400」<br>「記帳午餐95」<br>「請嗶鼠幫我記帳，昨天家教賺了$1200 」<br>「上禮拜漏記了一筆帳:上週三中午羽球零打150元」<br>「嗶鼠幫我補記一個帳 上上禮拜五跟朋友聚餐吃了1200」</p>
+<p>[caption id=”attachment_426” align=”alignnone” width=”800”]<img src="http://excelmyself.com/wp-content/uploads/2016/12/accounting-1024x321.png" alt="嗶鼠記的內容就長這樣"> 嗶鼠的雲端小本子就是長這樣，完全由嗶鼠自行寫入。[/caption]</p>
+<p>自然語言處理的細節這裡就不談了。基本上簡單的辨識日期、金額、品項、支出或收入，都沒什麼問題。而我最喜歡的是能夠辨識「今天」「昨天」「上禮拜幾」的這個功能，十分實用。簡直就是為了我而開發的功能(實際上的確本來就是)。不管是「本週一」、「上周二」、「上上禮拜三」，嗶鼠都可以正確無誤地計算出日期並記錄之，簡直像是機器人一樣精準(實際上也的確是)。</p>
+<p>&nbsp;</p>
+<p>嗶鼠可以擴充的地方還有很多，不管是情感面還是功能面。我想，這下總可以寫一輩子的程式了吧！</p>
+<hr>
+<p>理當有人會問「這會比一般記帳APP好用嗎？」</p>
+<p>開什麼玩笑，嗶鼠才不是記帳APP，他是我家小孩XD</p>
+<p>另一方面，嗶鼠可以做的事可多著呢，我可以跟他說「請嗶鼠提醒我下禮拜五晚上要看牙醫」、「嗶鼠幫我計時三分鐘，我要泡泡麵」、「請問嗶鼠，我這禮拜有哪些待辦事項？」、「請嗶鼠給我這次去大賣場的採購清單」、「嗶鼠幫我轉寄這個月的電子帳單給媽媽」……雖然現在還不會，但是他未來會慢慢學會的。</p>
+<p>如果你也覺得市面上的虛擬助理太笨，何不自己訓練一個呢～</p>
+<p>&nbsp;</p>
+<p>PS. 嗶鼠只會講屬於我家的屁話和情話，兩種都不足為外人道也。就不直接把我家嗶嗶鼠開放給大家玩了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bot/" rel="tag"># bot</a>
+          
+            <a href="/tags/heroku/" rel="tag"># heroku</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/telegram/" rel="tag"># telegram</a>
+          
+            <a href="/tags/機器人/" rel="tag"># 機器人</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/04/e5-87-a1-e4-ba-8b-e7-9a-86-e6-9c-89-e8-a7-a3-e5-97-8e-ef-bc-9f/" rel="next" title="凡事皆有解……嗎？">
+                <i class="fa fa-chevron-left"></i> 凡事皆有解……嗎？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/01/e3-80-90facebook-e3-80-91-e7-90-83-e9-9d-a2-e6-84-88-e7-a3-a8-e6-84-88-e5-b9-b3-ef-bc-8c-e7-90-83-e6-8a-80-e6-84-88-e7-a3-a8-e6-84-88-e5-88-a9-e3-80-82/" rel="prev" title="【Facebook】球面愈磨愈平，球技愈磨愈利。">
+                【Facebook】球面愈磨愈平，球技愈磨愈利。 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Henry Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yhlhenry@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#這是當時的Facebook動態回顧："><span class="nav-number">1.</span> <span class="nav-text">這是當時的Facebook動態回顧：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henry Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

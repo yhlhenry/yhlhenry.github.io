@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Math,ProjectEuler," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="當有人問我「為什麼想學寫程式？」我通常的回答就是「好玩啊！」但其實我還有一個更深層、更具體、更不為人知的動機……我想解開Project Euler的難題！[caption id=”” align=”aligncenter” width=”360”] https://projecteuler.net/[/caption]">
+<meta name="keywords" content="Math,ProjectEuler">
+<meta property="og:type" content="article">
+<meta property="og:title" content="真積力久則入">
+<meta property="og:url" content="http://yoursite.com/2017/01/08/e7-9c-9f-e7-a9-8d-e5-8a-9b-e4-b9-85-e5-89-87-e5-85-a5/index.html">
+<meta property="og:site_name" content="亨利羊">
+<meta property="og:description" content="當有人問我「為什麼想學寫程式？」我通常的回答就是「好玩啊！」但其實我還有一個更深層、更具體、更不為人知的動機……我想解開Project Euler的難題！[caption id=”” align=”aligncenter” width=”360”] https://projecteuler.net/[/caption]　　自從踏入了Project Euler的世界，有閒的時候就會去解個一題兩題，打">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="https://camo.githubusercontent.com/cd68578960d6602b5c6d77330255bdbcc9116e70/687474703a2f2f67726f6b636f64652e636f6d2f776f726470726573732f77702d636f6e74656e742f75706c6f6164732f70726f6a6563745f65756c65722e706e67">
+<meta property="og:image" content="https://projecteuler.net/images/answer_correct.png">
+<meta property="og:updated_time" content="2017-11-18T00:26:39.574Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="真積力久則入">
+<meta name="twitter:description" content="當有人問我「為什麼想學寫程式？」我通常的回答就是「好玩啊！」但其實我還有一個更深層、更具體、更不為人知的動機……我想解開Project Euler的難題！[caption id=”” align=”aligncenter” width=”360”] https://projecteuler.net/[/caption]　　自從踏入了Project Euler的世界，有閒的時候就會去解個一題兩題，打">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/cd68578960d6602b5c6d77330255bdbcc9116e70/687474703a2f2f67726f6b636f64652e636f6d2f776f726470726573732f77702d636f6e74656e742f75706c6f6164732f70726f6a6563745f65756c65722e706e67">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/08/e7-9c-9f-e7-a9-8d-e5-8a-9b-e4-b9-85-e5-89-87-e5-85-a5/"/>
+
+
+
+
+
+  <title>真積力久則入 | 亨利羊</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">亨利羊</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/08/e7-9c-9f-e7-a9-8d-e5-8a-9b-e4-b9-85-e5-89-87-e5-85-a5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Henry Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亨利羊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">真積力久則入</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-01-08T21:02:58+08:00">
+                2017-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Chat/" itemprop="url" rel="index">
+                    <span itemprop="name">Chat</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div class="" data-block="true" data-editor="829v4" data-offset-key="c9107-0-0"><br><div class="_1mf _1mj" data-offset-key="c9107-0-0"><span data-offset-key="c9107-0-0"><span data-text="true">當有人問我「為什麼想學寫程式？」我通常的回答就是「好玩啊！」</span></span></div><br></div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="17klo-0-0"><br><div class="_1mf _1mj" data-offset-key="17klo-0-0"><span data-offset-key="17klo-0-0"><span data-text="true">但其實我還有一個更深層、更具體、更不為人知的動機……我想解開Project Euler的難題！</span></span></div><br></div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0"><br><br>[caption id=”” align=”aligncenter” width=”360”]<a href="https://projecteuler.net/" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/cd68578960d6602b5c6d77330255bdbcc9116e70/687474703a2f2f67726f6b636f64652e636f6d2f776f726470726573732f77702d636f6e74656e742f75706c6f6164732f70726f6a6563745f65756c65722e706e67" alt="「euler project」的圖片"></a> <a href="https://projecteuler.net/[/caption" target="_blank" rel="noopener">https://projecteuler.net/[/caption</a>]<br><br></div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0"></div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0"></div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0">　　自從踏入了Project Euler的世界，有閒的時候就會去解個一題兩題，打磨打磨自己的腦子。但是解了二十多題之後，我就卡關了。而且一卡就是好幾個月。其實Project Euler並沒有規定要按照順序解題，我大可以暫時先跳過這題以後再回來思考。但我就是心有不甘，一股牛脾氣倔性讓我賭上了一口氣在這題，不解決它誓不前進！</div><br>&gt; ### <span style="color: #ffffff;"><strong>當才華還撐不起野心的時候，就應該靜下心來學習</strong></span><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0">　　Project Euler開頭的二十幾題，我都是用excel+VBA硬幹。老實說VBA用來解決辦公室問題雖是綽綽有餘，但在我這個半吊子手裡，實在不是一個適合解題的工具。我知道是時候學個新的語言了。看到Project Euler的程式語言統計表裡，最多人使用的就是Python，我也久仰其名。我想，這應該會是一個不錯的武器吧。</div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0"></div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0">　　自入手Python以來，自知火候未足，所以一直沒有回頭來解題。直至今日感到天時地利人和俱全，方始再度叩關，果然卡了幾個月的題目應手而破。在輸入答案的當下，其實有一點因為緊張加上興奮，手指微微颤抖著。<img src="https://projecteuler.net/images/answer_correct.png" alt="Correct"></div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0">送出答案，總算見到久違的綠色大勾，不由得歡叫一聲。要不是妻子吹頭髮的聲音太大，她肯定會跑來瞧瞧發生什麼事了。</div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0">–</div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0">話說回來，也還是有人會問我「為什麼會想解Project Euler的數學題呢？」</div><br><div class="" data-block="true" data-editor="829v4" data-offset-key="4e9la-0-0">我的回答就也還是「好玩啊！」</div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Math/" rel="tag"># Math</a>
+          
+            <a href="/tags/ProjectEuler/" rel="tag"># ProjectEuler</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/08/e8-87-aa-e6-88-91-e8-aa-8d-e5-90-8c-e7-9a-84-e9-87-8d-e6-95-b4/" rel="next" title="自我認同的重整">
+                <i class="fa fa-chevron-left"></i> 自我認同的重整
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/29/e8-85-b3-e5-82-b7-e6-97-a5-e8-aa-8c/" rel="prev" title="腳傷日誌">
+                腳傷日誌 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Henry Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yhlhenry@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henry Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

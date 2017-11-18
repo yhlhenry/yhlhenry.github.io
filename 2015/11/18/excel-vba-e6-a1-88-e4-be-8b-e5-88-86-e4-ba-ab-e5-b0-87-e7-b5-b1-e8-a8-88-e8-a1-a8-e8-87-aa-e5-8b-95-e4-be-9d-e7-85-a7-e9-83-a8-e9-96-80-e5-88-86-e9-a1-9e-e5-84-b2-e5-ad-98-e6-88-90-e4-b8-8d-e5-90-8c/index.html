@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="excel,vba,成功案例," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="【前情提要】R同事好不容易靠著亨利羊的幫助，把原本麻煩的假勤統計表自動化了。以前做報表耗時廢力又容易出錯，現在又快又精準，簡直可以從此以後過著幸福快樂的日子。 但是，人苦不知足，得隴復望蜀。能不能把後續分裝的動作也通通都自動化呢？ &amp;nbsp; 【問題】把一張含有全公司名單的大表，依照部門分類篩選，存成十幾個小">
+<meta name="keywords" content="excel,vba,成功案例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Excel_VBA_案例分享_將統計表自動依照部門分類儲存成不同檔案">
+<meta property="og:url" content="http://yoursite.com/2015/11/18/excel-vba-e6-a1-88-e4-be-8b-e5-88-86-e4-ba-ab-e5-b0-87-e7-b5-b1-e8-a8-88-e8-a1-a8-e8-87-aa-e5-8b-95-e4-be-9d-e7-85-a7-e9-83-a8-e9-96-80-e5-88-86-e9-a1-9e-e5-84-b2-e5-ad-98-e6-88-90-e4-b8-8d-e5-90-8c/index.html">
+<meta property="og:site_name" content="亨利羊">
+<meta property="og:description" content="【前情提要】R同事好不容易靠著亨利羊的幫助，把原本麻煩的假勤統計表自動化了。以前做報表耗時廢力又容易出錯，現在又快又精準，簡直可以從此以後過著幸福快樂的日子。 但是，人苦不知足，得隴復望蜀。能不能把後續分裝的動作也通通都自動化呢？ &amp;nbsp; 【問題】把一張含有全公司名單的大表，依照部門分類篩選，存成十幾個小表。過去手動製作的方式是 1.篩選 2.複製 3.貼上 4.另存新檔，並重複十幾次。 該">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2017-11-18T00:26:39.527Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Excel_VBA_案例分享_將統計表自動依照部門分類儲存成不同檔案">
+<meta name="twitter:description" content="【前情提要】R同事好不容易靠著亨利羊的幫助，把原本麻煩的假勤統計表自動化了。以前做報表耗時廢力又容易出錯，現在又快又精準，簡直可以從此以後過著幸福快樂的日子。 但是，人苦不知足，得隴復望蜀。能不能把後續分裝的動作也通通都自動化呢？ &amp;nbsp; 【問題】把一張含有全公司名單的大表，依照部門分類篩選，存成十幾個小表。過去手動製作的方式是 1.篩選 2.複製 3.貼上 4.另存新檔，並重複十幾次。 該">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/11/18/excel-vba-e6-a1-88-e4-be-8b-e5-88-86-e4-ba-ab-e5-b0-87-e7-b5-b1-e8-a8-88-e8-a1-a8-e8-87-aa-e5-8b-95-e4-be-9d-e7-85-a7-e9-83-a8-e9-96-80-e5-88-86-e9-a1-9e-e5-84-b2-e5-ad-98-e6-88-90-e4-b8-8d-e5-90-8c/"/>
+
+
+
+
+
+  <title>Excel_VBA_案例分享_將統計表自動依照部門分類儲存成不同檔案 | 亨利羊</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">亨利羊</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/11/18/excel-vba-e6-a1-88-e4-be-8b-e5-88-86-e4-ba-ab-e5-b0-87-e7-b5-b1-e8-a8-88-e8-a1-a8-e8-87-aa-e5-8b-95-e4-be-9d-e7-85-a7-e9-83-a8-e9-96-80-e5-88-86-e9-a1-9e-e5-84-b2-e5-ad-98-e6-88-90-e4-b8-8d-e5-90-8c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Henry Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亨利羊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Excel_VBA_案例分享_將統計表自動依照部門分類儲存成不同檔案</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2015-11-18T15:45:30+08:00">
+                2015-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Excel/" itemprop="url" rel="index">
+                    <span itemprop="name">Excel</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Excel/Knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">Knowledge</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>【前情提要】R同事好不容易靠著亨利羊的幫助，把原本麻煩的假勤統計表自動化了。以前做報表耗時廢力又容易出錯，現在又快又精準，簡直可以從此以後過著幸福快樂的日子。</p>
+<p>但是，人苦不知足，得隴復望蜀。能不能把後續分裝的動作也通通都自動化呢？</p>
+<p>&nbsp;</p>
+<p>【問題】把一張含有全公司名單的大表，依照部門分類篩選，存成十幾個小表。過去手動製作的方式是 1.篩選 2.複製 3.貼上 4.另存新檔，並重複十幾次。</p>
+<p>該如何把這個過程也都自動化呢？</p>
+<p>&nbsp;</p>
+<p>【解法】</p>
+<p>這些在儲存格之外做的事，非用到VBA不可了。<br>(以下程式碼已改寫過，消去公司相關內部資訊)</p>
+<p><pre>Sub classify()<br> ‘<br> ‘ classify Macro<br> ‘</pre></p>
+<p>fn = Application.ThisWorkbook.Name<br> MsgBox “歡迎使用假勤統計小工具，本程式約需兩分鐘，請耐心等候。”<br> Dim branch As String<br> Application.DisplayAlerts = False</p>
+<p>For m = 2 To 12 ‘總共要生成11個檔案<br> Workbooks(fn).Activate<br> If Sheets(“部門分類”).Cells(2, m) = “” Then ‘打勾的才要做<br>Else<br>branch = Sheets(“部門分類”).Cells(1, m)<br>MsgBox “現在進行的是” &amp; branch</p>
+<p>lastrow = Sheets(“部門分類”).Cells(1, m).End(xlDown).Row<br>For Each s In Sheets<br> If s.Name = branch Then<br> SNN = 1<br> Exit For<br> Else<br> SNN = 0<br> End If<br> Next<br> If SNN = 0 Then<br> Sheets.Add<br> ActiveSheet.Name = branch<br> Else<br> Sheets(branch).Select<br> End If</p>
+<p>‘把第一行第二行標題擺上<br> Sheets(“總表”).Select<br> Rows(“1:2”).Select<br> Selection.Copy<br> Sheets(branch).Select<br> Rows(“1:2”).Select<br> ActiveSheet.Paste</p>
+<p>For i = 3 To lastrow<br> target = Sheets(“部門分類”).Cells(i, m).Value</p>
+<p>Sheets(“總表”).Select<br> Columns(“B:B”).Select<br> Set A = Selection.Find(What:=target, After:=ActiveCell, LookIn:=xlValues, LookAt <em><br> :=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, MatchCase:= </em><br> False, MatchByte:=False, SearchFormat:=False)<br> If Not A Is Nothing Then ‘如果總表中無此人名 則跳過<br> A.Activate<br> x = ActiveCell.Row<br> Rows(x &amp; “:” &amp; x).Select<br> Selection.Copy<br> Sheets(branch).Select<br> Rows(i &amp; “:” &amp; i).Select<br> Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, <em><br> SkipBlanks:=False, Transpose:=False<br> Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks </em><br> :=False, Transpose:=False<br>Else<br>End If<br>Next<br>lastcol = Sheets(branch).Cells(lastrow, 1).End(xlToRight).Column<br>Cells(lastrow + 1, 5) = “合計”<br> ‘合計欄位<br> For i = 6 To lastcol</p>
+<p>Cells(lastrow + 1, i) = “=SUM(R[-“ &amp; lastrow - 2 &amp; “]C:R[-1]C)”</p>
+<p>Next</p>
+<p>Sheets(branch).Select<br> Sheets(branch).Copy<br>ActiveWorkbook.SaveAs Filename:=”H:假勤記錄(季)表<em>全公司2015auto2015</em>假勤記錄(季)表<em>全公司</em>“ &amp; Format(Now, “yy”) &amp; Format(Now, “mm”) &amp; Format(Now, “dd”) &amp; “<em>“ &amp; branch &amp; “.xlsx”, </em> FileFormat:=xlOpenXMLWorkbook, CreateBackup:=False<br>MsgBox branch &amp; “已完成”<br>End If<br>Next ‘生成檔案迴圈<br>MsgBox “各部門檔案已生成完畢，存檔路徑為 H:假勤記錄(季)表_全公司2015auto”<br>End Sub<br>&nbsp;</p>
+<p>【成果】</p>
+<p>原本多個手動步驟，已簡化為一鍵完成：</p>
+<p>自動篩選、自動複製貼上、自動加總、自動另存新檔、還自動取好對應的檔名，這一切都只需要……一鍵！</p>
+<p>改善工作效率任務，成功…………了一半XD</p>
+<p>為什麼說是成功一半？因為這段VBA程式碼在亨利羊自己的桌電上跑起來還算蠻順的，費時不到兩分鐘。畫面劈哩叭啦一閃而過，完全不知道excel在做什麼。但是交給R同事去執行時，才發現電腦效能的差距……R同事可以看著電腦進行每個動作，一朢而知進度做到哪了。實在讓人有點不耐，但又怕同時開其它程式會造成當機。所以我在檔案中的「使用說明」的第4點加註了：</p>
+<p>&nbsp;</p>
+<p><span style="color: #008000;">使用說明：</span></p>
+<p><span style="color: #008000;">1.將EIP匯出之Q4檔案整個貼到”Q4”sheet，若較前三季欄位有所變動，請做必要之修改。</span><br><span style="color: #008000;"> 2.貼上後，”總表”sheet即會自動帶入Q4數據。全公司總表即完成。</span><br><span style="color: #008000;"> 3.至”部門分類”sheet的第二行，將你這次要出的檔案打勾。</span><br><strong><span style="color: #008000;"> 4.按下”一鍵完成”之按鍵，可選擇坐在位置上觀看程式運行，或著利用時間先去上個廁所。 估計所需時間約數分鐘(依個人電腦效能而定)</span></strong><br><span style="color: #008000;"> 5.程式運行完畢後，至 <u>H:</u><u>假勤記錄</u><u>(</u><u>季</u><u>)</u><u>表</u><u>_</u><u>全公司</u><u>2015auto</u> 檢查所生成之檔案。</span></p>
+<p><span style="color: #008000;">本檔案為Henry Yang 依個人理解之作業流程所開發，以創用CC 姓名標示 3.0 台灣 授權條款釋出。</span><br><span style="color: #008000;"> 若有任何更新維護上的問題歡迎回報。唯不保證其正確性，建議HR使用時仍應再行檢查。</span></p>
+<p>(以上使用說明亦改寫過，已消除公司內部資訊。)</p>
+<p>&nbsp;</p>
+<p>我知道程式碼還很有優化的空間，但是與其把這個執行效率推到極致，我想還是先去做下一個工作流程的改善好了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/excel/" rel="tag"># excel</a>
+          
+            <a href="/tags/vba/" rel="tag"># vba</a>
+          
+            <a href="/tags/成功案例/" rel="tag"># 成功案例</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/17/excel-e6-a1-88-e4-be-8b-e5-88-86-e4-ba-ab-e8-8a-b1-e5-8d-8a-e5-a4-a9-e6-99-82-e9-96-93-e5-81-9a-e5-81-87-e5-8b-a4-e7-b5-b1-e8-a8-88-e8-a1-a8-ef-bc-8c-e7-82-ba-e5-90-8c-e4-ba-8b-e7-af-80-e7-9c-81/" rel="next" title="Excel_案例分享_我花半天時間做假勤統計表，幫同事節省了無數個半天">
+                <i class="fa fa-chevron-left"></i> Excel_案例分享_我花半天時間做假勤統計表，幫同事節省了無數個半天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/18/e5-b0-b1-e6-a5-ad-e6-9c-8d-e5-8b-99-e4-b9-99-e7-b4-9a-e6-8a-80-e8-a1-93-e5-a3-ab-e8-80-83-e5-8f-96-e5-bf-83-e5-be-97/" rel="prev" title="就業服務乙級技術士考取心得">
+                就業服務乙級技術士考取心得 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Henry Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yhlhenry@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henry Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

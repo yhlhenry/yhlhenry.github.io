@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="excel,分享,vba," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;nbsp; 成了。 「當Outlook收進了一封主旨含有特定關鍵字的信，即觸發VBA指令碼，自動將該信件內文中第二個表格的某幾個特定欄位之數字存到預先準備好的excel檔案中，並依時間記錄之。」這麼明確的一件事情，很難嗎？單就VBA的程式複雜度來說，不難。但就學習的難易度來說，較普通的excel VBA難上許">
+<meta name="keywords" content="excel,分享,vba">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Excel&amp;Outlook_VBA_自動將符合條件的信件內文存到指定的excel檔案">
+<meta property="og:url" content="http://yoursite.com/2016/02/22/exceloutlook-vba-e8-87-aa-e5-8b-95-e5-b0-87-e7-ac-a6-e5-90-88-e6-a2-9d-e4-bb-b6-e7-9a-84-e4-bf-a1-e4-bb-b6-e5-85-a7-e6-96-87-e5-ad-98-e5-88-b0-e6-8c-87-e5-ae-9a-e7-9a-84excel-e6-aa-94-e6-a1-88/index.html">
+<meta property="og:site_name" content="亨利羊">
+<meta property="og:description" content="&amp;nbsp; 成了。 「當Outlook收進了一封主旨含有特定關鍵字的信，即觸發VBA指令碼，自動將該信件內文中第二個表格的某幾個特定欄位之數字存到預先準備好的excel檔案中，並依時間記錄之。」這麼明確的一件事情，很難嗎？單就VBA的程式複雜度來說，不難。但就學習的難易度來說，較普通的excel VBA難上許多許多。較難的原因有二：1.excel有錄製巨集的功能，再怎麼不會寫程式的人，都可以先把">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2017-11-18T00:26:39.550Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Excel&amp;Outlook_VBA_自動將符合條件的信件內文存到指定的excel檔案">
+<meta name="twitter:description" content="&amp;nbsp; 成了。 「當Outlook收進了一封主旨含有特定關鍵字的信，即觸發VBA指令碼，自動將該信件內文中第二個表格的某幾個特定欄位之數字存到預先準備好的excel檔案中，並依時間記錄之。」這麼明確的一件事情，很難嗎？單就VBA的程式複雜度來說，不難。但就學習的難易度來說，較普通的excel VBA難上許多許多。較難的原因有二：1.excel有錄製巨集的功能，再怎麼不會寫程式的人，都可以先把">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/02/22/exceloutlook-vba-e8-87-aa-e5-8b-95-e5-b0-87-e7-ac-a6-e5-90-88-e6-a2-9d-e4-bb-b6-e7-9a-84-e4-bf-a1-e4-bb-b6-e5-85-a7-e6-96-87-e5-ad-98-e5-88-b0-e6-8c-87-e5-ae-9a-e7-9a-84excel-e6-aa-94-e6-a1-88/"/>
+
+
+
+
+
+  <title>Excel&Outlook_VBA_自動將符合條件的信件內文存到指定的excel檔案 | 亨利羊</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">亨利羊</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/02/22/exceloutlook-vba-e8-87-aa-e5-8b-95-e5-b0-87-e7-ac-a6-e5-90-88-e6-a2-9d-e4-bb-b6-e7-9a-84-e4-bf-a1-e4-bb-b6-e5-85-a7-e6-96-87-e5-ad-98-e5-88-b0-e6-8c-87-e5-ae-9a-e7-9a-84excel-e6-aa-94-e6-a1-88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Henry Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亨利羊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Excel&Outlook_VBA_自動將符合條件的信件內文存到指定的excel檔案</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2016-02-22T18:46:18+08:00">
+                2016-02-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Excel/" itemprop="url" rel="index">
+                    <span itemprop="name">Excel</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Excel/Knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">Knowledge</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&nbsp;</p>
+<p>成了。</p>
+<p>「當Outlook收進了一封主旨含有特定關鍵字的信，即觸發VBA指令碼，自動將該信件內文中第二個表格的某幾個特定欄位之數字存到預先準備好的excel檔案中，並依時間記錄之。」<br>這麼明確的一件事情，很難嗎？<br>單就VBA的程式複雜度來說，不難。<br>但就學習的難易度來說，較普通的excel VBA難上許多許多。<br>較難的原因有二：<br>1.excel有錄製巨集的功能，再怎麼不會寫程式的人，都可以先把巨集錄起來，再慢慢觀看程式碼是怎麼寫的。<br>但是很可惜outlook沒有錄製巨集的功能。</p>
+<p>2.網路上Outlook的VBA討論遠較excel的少上太多了。<br>如果Google搜尋「outlook vba」「excel vba」這兩組關鍵字，分別是946,000項結果和14,400,000項結果。相差超過15倍。</p>
+<p>第一個因素使得自學的難度提升，<br>第二個因素使得找到人教的難度提升。<br>所以就是這麼一個簡單功能，逼得我問人又問人，搜尋又搜尋。</p>
+<p>最後總算是實作出來了。</p>
+<p>附上目前的程式碼，大家一起參詳參詳。</p>
+<hr>
+<p>Sub ExportToExcel(MyMail As MailItem)</p>
+<p>Dim srtID As String, oINS As Outlook.NameSpace<br>Dim olMail As Outlook.MailItem<br>Dim strFileName As String<br>Dim we</p>
+<p><span style="color: #339966;"> ‘Excel Varibles</span><br>Dim oXLAPP As Object, oXLwb As Object<br>Dim lRow As Long</p>
+<p><span style="color: #339966;">‘Set MyMail = ActiveExplorer.Selection.Item(1)</span></p>
+<p>strID = MyMail.EntryID<br>Set olNS = Application.GetNamespace(“MAPI”)<br>Set olMail = olNS.GetItemFromID(strID)</p>
+<p><span style="color: #339966;"> ‘Establish an Excel application object</span><br>On Error Resume Next<br>Set oXLAPP = GetObject(, “Excel.Applicaion”)</p>
+<p><span style="color: #339966;">‘If not found then create new instance</span><br>If Err.Number &lt;&gt; 0 Then<br>Set oXLAPP = CreateObject(“Excel.Application”)<br>End If<br>Err.Clear<br>On Error GoTo 0</p>
+<p><span style="color: #339966;">‘’’’</span><br>Set myinspector = MyMail.GetInspector<br>Set we = myinspector.WordEditor<br>Set tbl = we.tables(2)</p>
+<p><span style="color: #339966;"> ‘Show Excel</span><br>oXLAPP.Visible = True</p>
+<p><span style="color: #339966;">‘Open the relevant file</span><br>Set oXLwb = oXLAPP.Workbooks.Open(“C:mailtoexcel.xlsx”)</p>
+<p><span style="color: #339966;">‘Set the relevant output sheet. Change as applicable</span><br>On Error Resume Next<br>If olMail.Body Like “<em>關鍵字</em>“ Then</p>
+<p>With oXLwb.sheets(1)<br>For c = 1 To 10<br>For r = 1 To 12<br>.cells(r, c) = tbl.cell(r, c)<br>Next<br>Next</p>
+<p>End With<br>End If</p>
+<p>lastrow = oXLwb.sheets(“record”).[A1].End(xlDown).Row<br>oXLwb.sheets(“record”).cells(lastrow + 1, 1).Value = Year(Now()) &amp; “/“ &amp; Month(Now()) &amp; “/“ &amp; Day(Now())<br>oXLwb.sheets(“record”).cells(lastrow + 1, 2).Value = oXLwb.sheets(1).cells(9, 4)<br>oXLwb.sheets(“record”).cells(lastrow + 1, 3).Value = oXLwb.sheets(1).cells(10, 4)<br>oXLwb.sheets(“record”).cells(lastrow + 1, 4).Value = oXLwb.sheets(1).cells(11, 4)<br>oXLwb.sheets(“record”).cells(lastrow + 1, 5).Value = oXLwb.sheets(1).cells(12, 4)</p>
+<p><span style="color: #339966;">‘Close and Clean up EXCEL</span><br>oXLwb.Save<br>oXLwb.Close (True)<br>oXLAPP.Quit<br>Set oXLwb = Nothing<br>Set oXLAPP = Nothing</p>
+<p>Set olMail = Nothing<br>Set olNS = Nothing<br>End Sub</p>
+<hr>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/excel/" rel="tag"># excel</a>
+          
+            <a href="/tags/分享/" rel="tag"># 分享</a>
+          
+            <a href="/tags/vba/" rel="tag"># vba</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/20/excel-e5-bf-ab-e9-80-9f-e9-81-b8-e5-8f-96-e6-89-80-e6-9c-89-e7-a9-ba-e6-a0-bc-e9-81-b8-e5-8f-96-e6-89-80-e6-9c-89-e5-85-ac-e5-bc-8f-e6-ac-84-e4-bd-8d/" rel="next" title="Excel_快速選取所有空格/選取所有公式欄位">
+                <i class="fa fa-chevron-left"></i> Excel_快速選取所有空格/選取所有公式欄位
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/23/excel-e5-a4-96-e5-8c-85-e6-9c-8d-e5-8b-99-e6-a1-88-e4-be-8b-e5-88-86-e4-ba-ab/" rel="prev" title="Excel_外包服務_案例分享">
+                Excel_外包服務_案例分享 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Henry Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yhlhenry@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henry Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="【前言】無庸置疑，我最崇拜的偶像之一就是尤拉(Euler，臺灣通常譯作歐拉，但我喜歡沿用我小時候的習慣，稱他為尤拉) 而我擅自猜測：【尤拉計劃(Project Euler)】大概就是一群和我一樣崇敬尤拉的人所發起的計劃吧。 Euler Project裡面有數百道數學題，很多都是「很數學」的題目：意即不是生活應用題，解開">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Excel_尤拉計劃 Project Euler_第18題 Maximum path sum I">
+<meta property="og:url" content="http://yoursite.com/2016/06/21/excel-e5-b0-a4-e6-8b-89-e8-a8-88-e5-8a-83-project-euler-e7-ac-ac18-e9-a1-8c-maximum-path-sum-i/index.html">
+<meta property="og:site_name" content="亨利羊">
+<meta property="og:description" content="【前言】無庸置疑，我最崇拜的偶像之一就是尤拉(Euler，臺灣通常譯作歐拉，但我喜歡沿用我小時候的習慣，稱他為尤拉) 而我擅自猜測：【尤拉計劃(Project Euler)】大概就是一群和我一樣崇敬尤拉的人所發起的計劃吧。 Euler Project裡面有數百道數學題，很多都是「很數學」的題目：意即不是生活應用題，解開謎底對人生可能也沒什麼幫助。純粹就是享受動腦的樂趣用的。 而且這些數學題都不必用">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://excelmyself.com/wp-content/uploads/2016/06/maximumpathsum.png">
+<meta property="og:updated_time" content="2017-11-18T00:26:39.576Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Excel_尤拉計劃 Project Euler_第18題 Maximum path sum I">
+<meta name="twitter:description" content="【前言】無庸置疑，我最崇拜的偶像之一就是尤拉(Euler，臺灣通常譯作歐拉，但我喜歡沿用我小時候的習慣，稱他為尤拉) 而我擅自猜測：【尤拉計劃(Project Euler)】大概就是一群和我一樣崇敬尤拉的人所發起的計劃吧。 Euler Project裡面有數百道數學題，很多都是「很數學」的題目：意即不是生活應用題，解開謎底對人生可能也沒什麼幫助。純粹就是享受動腦的樂趣用的。 而且這些數學題都不必用">
+<meta name="twitter:image" content="http://excelmyself.com/wp-content/uploads/2016/06/maximumpathsum.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/21/excel-e5-b0-a4-e6-8b-89-e8-a8-88-e5-8a-83-project-euler-e7-ac-ac18-e9-a1-8c-maximum-path-sum-i/"/>
+
+
+
+
+
+  <title>Excel_尤拉計劃 Project Euler_第18題 Maximum path sum I | 亨利羊</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">亨利羊</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/21/excel-e5-b0-a4-e6-8b-89-e8-a8-88-e5-8a-83-project-euler-e7-ac-ac18-e9-a1-8c-maximum-path-sum-i/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Henry Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="亨利羊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Excel_尤拉計劃 Project Euler_第18題 Maximum path sum I</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2016-06-21T21:29:36+08:00">
+                2016-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Excel/" itemprop="url" rel="index">
+                    <span itemprop="name">Excel</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Excel/Knowledge/" itemprop="url" rel="index">
+                    <span itemprop="name">Knowledge</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="【前言】"><a href="#【前言】" class="headerlink" title="【前言】"></a>【前言】</h4><p>無庸置疑，我最崇拜的偶像之一就是<a href="https://zh.wikipedia.org/wiki/%E8%90%8A%E6%98%82%E5%93%88%E5%BE%B7%C2%B7%E6%AD%90%E6%8B%89" target="_blank" rel="noopener">尤拉</a>(Euler，臺灣通常譯作歐拉，但我喜歡沿用我小時候的習慣，稱他為尤拉)</p>
+<p>而我擅自猜測：【<a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E8%AE%A1%E5%88%92" target="_blank" rel="noopener">尤拉計劃(Project Euler)</a>】大概就是一群和我一樣崇敬尤拉的人所發起的計劃吧。</p>
+<p>Euler Project裡面有數百道數學題，很多都是「很數學」的題目：意即不是生活應用題，解開謎底對人生可能也沒什麼幫助。純粹就是享受動腦的樂趣用的。</p>
+<p>而且這些數學題都不必用紙筆算，而是用電腦算、通常是需要寫程式來計算。我非常喜歡這個概念，這是何等迷人的設計啊！完全擺脫了中學考試繁瑣的計算過程，讓人可以專注在解題的技巧上。</p>
+<p>Euler Project的題目都有設計過，不需要高深的程式語言功力，也不需要深厚的數學功力，就可以享受解題的樂趣。不過你必需具備一點創意與想像力！在Euler Project不論你的解題過程如何，他只認定你答對或答錯，所以你可以盡己所能地用各種方式找出答案，不管是土法煉鋼、還是獨具巧思，只要能答對，都行！</p>
+<p>為了保持解題的樂趣，Project Euler希望解題者不要在Project Euler論壇以外PO出解題方法。但是網路上仍然有很多人po出解答。我都會小心翼翼地避開，深怕一不小心就壞了我的思考樂趣。所以我在這邊也不會po出解答，僅抒發我思考偶得的樂趣。</p>
+<p>&nbsp;</p>
+<h4 id="【Project-Euler-No-18】"><a href="#【Project-Euler-No-18】" class="headerlink" title="【Project Euler No.18】"></a>【Project Euler No.18】</h4><h5 id="Find-the-maximum-total-from-top-to-bottom-of-the-triangle-below"><a href="#Find-the-maximum-total-from-top-to-bottom-of-the-triangle-below" class="headerlink" title="Find the maximum total from top to bottom of the triangle below:"></a>Find the maximum total from top to bottom of the triangle below:</h5><p><img src="http://excelmyself.com/wp-content/uploads/2016/06/maximumpathsum.png" alt="Maximum Path Sum I"></p>
+<p>我之所以會使用【Excel】的分類來po這題，正是因為我覺得Excel比一般程式語言更適合用來觀察這一題。</p>
+<ol>
+<li>Excel一格一格的儲存格介面，正好為這個堆砌起來的三角型提供了一個思考的現成框架。比起抽象的程式語言來得更平易近人</li>
+<li>不需要寫任何程式、甚至不需要用到複雜公式。就能輕鬆解決這個問題<br>以下不解釋解題方法，但我可以講解一下如何快速打造出適合思考的介面。</li>
+</ol>
+<h5 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h5><p>把題目的數字複製貼上到Excel的A1至A15，此時的格式全部擠在一起，還未成為平穩漂亮的三角形。</p>
+<p>[embed]<a href="http://imgur.com/CwMdEPI[/embed" target="_blank" rel="noopener">http://imgur.com/CwMdEPI[/embed</a>]</p>
+<h5 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h5><p>按下Ctrl+H，將空格取代成兩個斜線「<strong>//</strong>」</p>
+<p>[embed]<a href="http://imgur.com/qxcXpPI[/embed" target="_blank" rel="noopener">http://imgur.com/qxcXpPI[/embed</a>]</p>
+<h5 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h5><p>在A21輸入公式：<strong>=REPT(“/“,35-ROW())&amp;A1</strong></p>
+<p>並向下複製至A35</p>
+<p>[embed]<a href="http://imgur.com/AprZrWM[/embed" target="_blank" rel="noopener">http://imgur.com/AprZrWM[/embed</a>]</p>
+<h5 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h5><p>複製，原地選擇性貼上為<strong>值</strong></p>
+<p>[embed]<a href="http://imgur.com/yLebYuK[/embed" target="_blank" rel="noopener">http://imgur.com/yLebYuK[/embed</a>]</p>
+<h5 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h5><p>對A21至A35進行<span style="text-decoration: underline;">資料剖析</span>，選擇以「<strong>/</strong>」作為分隔符號。並按下<span style="text-decoration: underline;">完成</span>。</p>
+<p>[embed]<a href="http://imgur.com/QxnEfjn[/embed" target="_blank" rel="noopener">http://imgur.com/QxnEfjn[/embed</a>]</p>
+<p>&nbsp;</p>
+<h5 id="Step-6"><a href="#Step-6" class="headerlink" title="Step 6"></a>Step 6</h5><p>完成。如果覺得不太漂亮，可以稍微調整一下儲存格欄寬。</p>
+<p>[embed]<a href="http://imgur.com/WbYN8YA[/embed" target="_blank" rel="noopener">http://imgur.com/WbYN8YA[/embed</a>]</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/15/excel-testimonial-1/" rel="next" title="【Excel】客戶見證">
+                <i class="fa fa-chevron-left"></i> 【Excel】客戶見證
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/25/excel-e6-88-91-e6-9c-80-e5-96-9c-e6-ad-a1-e7-9a-84-e5-85-ac-e5-bc-8f-e4-b9-8b-e4-b8-80/" rel="prev" title="Excel_我最喜歡的公式之一">
+                Excel_我最喜歡的公式之一 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Henry Yang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:yhlhenry@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#【前言】"><span class="nav-number">1.</span> <span class="nav-text">【前言】</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#【Project-Euler-No-18】"><span class="nav-number">2.</span> <span class="nav-text">【Project Euler No.18】</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Find-the-maximum-total-from-top-to-bottom-of-the-triangle-below"><span class="nav-number">2.1.</span> <span class="nav-text">Find the maximum total from top to bottom of the triangle below:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Step-1"><span class="nav-number">2.2.</span> <span class="nav-text">Step 1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Step-2"><span class="nav-number">2.3.</span> <span class="nav-text">Step 2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Step-3"><span class="nav-number">2.4.</span> <span class="nav-text">Step 3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Step-4"><span class="nav-number">2.5.</span> <span class="nav-text">Step 4</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Step-5"><span class="nav-number">2.6.</span> <span class="nav-text">Step 5</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Step-6"><span class="nav-number">2.7.</span> <span class="nav-text">Step 6</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Henry Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
